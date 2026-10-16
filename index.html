@@ -162,6 +162,22 @@ const lines = [
 const noText = ['No','Deberas chabela?','Me voy a desvivir por ti','Vamonos al parque chabela','Te voy a gritar que te amo en la linea','Va tú ganas'];
 const dodgeSubs = ['','> Deberas le vas a dar que no?','> Mira se movio el boton','> A ver, alcánzalo','> Casi le atinas...','> Bueno mas al rato te vuelvo a migajear'];
 
+/* Sonido (ahora suena a onda cuadrada/retro sci-fi) */
+let ac;
+function tone(f, d = .15, v = .08) {
+  try {
+    ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+    ac.resume();
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = 'square'; // Le da ese toque a videojuego viejo / computadora
+    o.frequency.value = f;
+    g.gain.setValueAtTime(v, ac.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001, ac.currentTime + d);
+    o.connect(g); g.connect(ac.destination);
+    o.start(); o.stop(ac.currentTime + d);
+  } catch (e) {}
+}
+  
 
 // Acorde de "victoria" futurista
 const win = () => [440, 554, 659, 880].forEach((f, i) => setTimeout(() => tone(f, .2, .1), i * 120));
