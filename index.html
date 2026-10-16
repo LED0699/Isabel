@@ -152,7 +152,7 @@ textarea{resize:none;min-height:70px}
 
 <script>
 // Pega aquí la URL de tu Apps Script
-const WEBHOOK = 'https://script.google.com/macros/s/AKfycbzSPzV5KB6ZHFz_BpeS_5QI3msIfgZLXStL0Db9SLsR9_C_4gIufRwBXtsKwCLjoUCn2g/exec';
+const WEBHOOK = 'https://script.google.com/macros/s/AKfycbwNU53NGlE61IvV-AbdA2oM8HecIxO0wHRDQ3TQg2HSQuvgvU2ErsgfwYuk1bWdt14xuw/exec';
 
 const $ = id => document.getElementById(id);
 const lines = [
@@ -166,7 +166,7 @@ const dodgeSubs = ['','> Deberas le vas a dar que no?','> Mira se movio el boton
 
 /* Sonido (ahora suena a onda cuadrada/retro sci-fi) */
 let ac;
-function tone(f, d = .15, v = .08) {
+function tone() {
   try {
     ac = ac || new (window.AudioContext || window.webkitAudioContext)();
     ac.resume();
